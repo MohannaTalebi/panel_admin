@@ -17,6 +17,7 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: bgColor,
       body: SafeArea(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: sidemenu(),
