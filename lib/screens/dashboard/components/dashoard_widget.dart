@@ -102,7 +102,7 @@ class profile_card extends StatelessWidget {
               horizontal:16,
             ),
             child: Text(
-              'Mohanna',
+              'Mohanna Talebi',
               style: TextStyle(
                 color: Colors.white,
               ),

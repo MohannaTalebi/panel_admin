@@ -26,7 +26,7 @@ class storege_detail extends StatelessWidget {
             'Storage Detail',
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontSize: 20,
               color: Colors.white,
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:panel_admin/constants.dart';
 
 class CloudStorageInfo {
   final String  title;
-  final String? totalStorage;
+  final String totalStorage;
   final String svgSrc;
   final int? numOfFiles, percentage;
   final Color? color;
@@ -12,7 +12,7 @@ class CloudStorageInfo {
   CloudStorageInfo({
   required  this.svgSrc,
    required this.title,
-    this.totalStorage,
+   required this.totalStorage,
     this.numOfFiles,
     this.percentage,
     this.color,

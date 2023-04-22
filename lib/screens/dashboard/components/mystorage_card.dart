@@ -41,6 +41,8 @@ class mystorage_card extends StatelessWidget {
                 children: [
                   Text(
                     title??'',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -50,6 +52,8 @@ class mystorage_card extends StatelessWidget {
                   ),
                   Text(
                     '1128file',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.white70,
                     ),
@@ -60,6 +64,8 @@ class mystorage_card extends StatelessWidget {
           ),
           Text(
             numberspace??'',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.white,
             ),
