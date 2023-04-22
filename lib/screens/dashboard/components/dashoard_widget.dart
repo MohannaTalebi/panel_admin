@@ -54,14 +54,11 @@ class header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 25),
-          child: Text(
-            'Dashboard',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
+        Text(
+          'Dashboard',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
           ),
         ),
         Spacer(),
