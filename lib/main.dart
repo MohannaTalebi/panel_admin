@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:panel_admin/screens/main/main_screen.dart';
+import 'package:get/get.dart';
+import 'package:panel_admin/screens/authentication/login_email.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: login_email(),
     );
   }
 }
