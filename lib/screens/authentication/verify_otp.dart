@@ -1,24 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:panel_admin/constants.dart';
 import 'package:panel_admin/core/controllers/usercontrol.dart';
-import 'package:panel_admin/screens/main/main_screen.dart';
-import 'package:panel_admin/widget/base_widget.dart';
+import 'package:pinput/pinput.dart';
 
-class login_email extends StatefulWidget {
-  const login_email({Key? key}) : super(key: key);
+class verify_otp extends StatefulWidget {
+  const verify_otp({Key? key}) : super(key: key);
 
   @override
-  State<login_email> createState() => _login_emailState();
+  State<verify_otp> createState() => _verify_otpState();
 }
 
 UserController userController = Get.put(UserController());
-GlobalKey<FormState> formKeyOtp = GlobalKey<FormState>();
-final TextEditingController controller = TextEditingController();
 
 
-class _login_emailState extends State<login_email> {
+class _verify_otpState extends State<verify_otp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,30 +91,23 @@ class _login_emailState extends State<login_email> {
                     SizedBox(
                       height: 100,
                     ),
-                    SizedBox(
-                      height: 50,
-                      width: 300,
-                      child: Form(
-                        key: formKeyOtp,
-                        child: TextFormField(
-                          controller: controller,
-                          validator: (value) =>
-                              validateemail(value),
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.grey,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5),
-                              ),
-                            ),
-                            hintText: 'Email',
-                            suffixIcon: Icon(
-                              Icons.email,
-                            ),
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Pinput(
+                        onChanged: (pin) {
+                          userController.otpCode = pin;
+                        },
+                        length: 6,
+                        defaultPinTheme: PinTheme(
+                          width: 55,
+                          height: 50,
+                          textStyle: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromRGBO(30, 60, 87, 1),
+                              fontWeight: FontWeight.w600),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black26),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
@@ -126,14 +115,7 @@ class _login_emailState extends State<login_email> {
                     SizedBox(
                       height: 50,
                     ),
-                    userController.loadingForLogin.value
-                        ? const SizedBox(
-                      height: 52,
-                      child: Center(
-                          child:
-                          CupertinoActivityIndicator()),
-                    )
-                        : SizedBox(
+                    SizedBox(
                       width: 300,
                       height: 40,
                       child: ElevatedButton(
@@ -144,17 +126,22 @@ class _login_emailState extends State<login_email> {
                           ),
                         ),
                         onPressed: () {
-                          if (formKeyOtp.currentState!.validate()) {
-                            userController.login();
-                          } else {
-                            BaseWidget.errorSnackBar(
-                              'Enter Valid Mobile Number',
-                              2,
-                              SnackPosition.BOTTOM,
-                            );
-                          }
+                          userController.verifyOtp();
                         },
                         child: Text('Log in'),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    GestureDetector(
+                      onTap: () {
+                        userController.verifyOtp();
+                      },
+                      child: Text(
+                        'didnt recived code? Resend again',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Color(0xFF176784),
+                        ),
                       ),
                     ),
                   ],
@@ -166,12 +153,4 @@ class _login_emailState extends State<login_email> {
       ),
     );
   }
-  String? validateemail(String? value) {
-    if (value == null || value.isEmpty ) {
-      return 'enter a valid email address';
-    } else {
-      return null;
-    }
-  }
-
 }
