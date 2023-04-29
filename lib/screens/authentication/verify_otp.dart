@@ -100,7 +100,7 @@ class _verify_otpState extends State<verify_otp> {
                         length: 6,
                         defaultPinTheme: PinTheme(
                           width: 55,
-                          height: 50,
+                          height: 60,
                           textStyle: TextStyle(
                               fontSize: 20,
                               color: Color.fromRGBO(30, 60, 87, 1),

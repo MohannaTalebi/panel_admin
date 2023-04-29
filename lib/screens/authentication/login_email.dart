@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:panel_admin/constants.dart';
 import 'package:panel_admin/core/controllers/usercontrol.dart';
-import 'package:panel_admin/screens/main/main_screen.dart';
 import 'package:panel_admin/widget/base_widget.dart';
 
 class login_email extends StatefulWidget {
@@ -101,7 +100,7 @@ class _login_emailState extends State<login_email> {
                       child: Form(
                         key: formKeyOtp,
                         child: TextFormField(
-                          controller: controller,
+                          controller: userController.email,
                           validator: (value) =>
                               validateemail(value),
                           keyboardType: TextInputType.emailAddress,
@@ -146,6 +145,7 @@ class _login_emailState extends State<login_email> {
                         onPressed: () {
                           if (formKeyOtp.currentState!.validate()) {
                             userController.login();
+                            // Get.toNamed('/verify_otp');
                           } else {
                             BaseWidget.errorSnackBar(
                               'Enter Valid Mobile Number',

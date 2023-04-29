@@ -70,10 +70,10 @@ class UserController extends GetxController {
       if (resp != null) {
         Api api = Middleware.resultValidation(resp);
         if (api.result != null) {
-          Get.to(verify_otp());
+          Get.toNamed('/verify_otp');
         } else {
           BaseWidget.errorSnackBar(
-            api.error!.mobile,
+            api.error!.email,
             2,
             SnackPosition.BOTTOM,
           );
@@ -81,6 +81,7 @@ class UserController extends GetxController {
       }
     } catch (e) {
       print(e);
+
     }
   }
 
@@ -107,7 +108,7 @@ class UserController extends GetxController {
               user_local.User.storeProfile(
                   profile_model.Profile.fromJson(api.data!));
 
-              Get.to(MainScreen());
+              Get.toNamed('/dashboard');
             } else {
               finalAction();
             }
@@ -115,7 +116,7 @@ class UserController extends GetxController {
             finalAction();
           }
 
-          Get.to(MainScreen());
+          Get.toNamed('/dashboard');
         } else {
           BaseWidget.errorSnackBar(
             api.error!.otp,
@@ -144,7 +145,7 @@ class UserController extends GetxController {
           if (api.result!) {
             user_local.User.storeProfile(
                 profile_model.Profile.fromJson(api.data!));
-           Get.to(MainScreen());
+           Get.toNamed('/dashboard');
           } else {
             finalAction();
           }
@@ -224,6 +225,6 @@ class UserController extends GetxController {
 
   void finalAction() {
     user_local.User.eraseUser();
-   Get.to(login_email());
+   Get.toNamed('/login_email');
   }
 }
