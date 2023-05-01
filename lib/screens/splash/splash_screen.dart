@@ -23,7 +23,7 @@ class _splashScreenState extends State<splashScreen> {
       const Duration(milliseconds: 2000),
           () {
         // userController.checkUserLogin();
-            Get.toNamed('/dashboard');
+            Get.toNamed('/mainscreen');
       },
     );
   }

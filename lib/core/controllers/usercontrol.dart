@@ -108,7 +108,7 @@ class UserController extends GetxController {
               user_local.User.storeProfile(
                   profile_model.Profile.fromJson(api.data!));
 
-              Get.toNamed('/dashboard');
+              Get.toNamed('/mainscreen');
             } else {
               finalAction();
             }
@@ -116,7 +116,7 @@ class UserController extends GetxController {
             finalAction();
           }
 
-          Get.toNamed('/dashboard');
+          Get.toNamed('/mainscreen');
         } else {
           BaseWidget.errorSnackBar(
             api.error!.otp,

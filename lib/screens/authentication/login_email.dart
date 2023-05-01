@@ -73,10 +73,8 @@ class _login_emailState extends State<login_email> {
                   ),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 70,
-                    ),
                     Text(
                       'Log in Email',
                       style: TextStyle(
@@ -85,7 +83,7 @@ class _login_emailState extends State<login_email> {
                       ),
                     ),
                     SizedBox(
-                      height: 60,
+                      height: 100,
                     ),
                     SizedBox(
                         width: 300,
@@ -111,7 +109,16 @@ class _login_emailState extends State<login_email> {
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(5),
+                                Radius.circular(10),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: secondaryColor,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
                               ),
                             ),
                             hintText: 'Email',
@@ -123,7 +130,7 @@ class _login_emailState extends State<login_email> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     userController.loadingForLogin.value
                         ? const SizedBox(
@@ -139,7 +146,7 @@ class _login_emailState extends State<login_email> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: bgColor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         onPressed: () {

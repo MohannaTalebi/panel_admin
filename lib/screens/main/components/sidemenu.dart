@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:panel_admin/constants.dart';
+import 'package:panel_admin/screens/admin/admin_dashboard.dart';
+import 'package:panel_admin/screens/main/main_screen.dart';
 
 
 class sidemenu extends StatelessWidget {
@@ -15,28 +18,38 @@ class sidemenu extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
+              margin: EdgeInsets.only(top: 20),
               child: Image.asset('assets/image/IMG_6549.PNG'),
             ),
+            SizedBox(height: 20,),
             itemdrawer(
               icon: Icons.dashboard,
               title: 'dashboard',
-              ontap: (){},
+              ontap: (){
+                Get.to(MainScreen());
+              },
             ),
+            Divider(),
             itemdrawer(
-              icon: Icons.transcribe,
-              title: 'transcribe',
-              ontap: (){},
+              icon: Icons.supervised_user_circle,
+              title: 'Users',
+              ontap: (){
+                Get.to(admin_dashboard());
+              },
             ),
+            Divider(),
             itemdrawer(
               icon: Icons.task,
               title: 'task',
               ontap: (){},
             ),
+            Divider(),
             itemdrawer(
               icon: Icons.store,
               title: 'store',
               ontap: (){},
             ),
+            Divider(),
             itemdrawer(
               icon: Icons.settings,
               title: 'settings',
@@ -60,16 +73,20 @@ class itemdrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: ontap,
-      leading: Icon(
-        icon,
-        color: Colors.white,
-      ),
-      title: Text(
-        title!,
-        style: TextStyle(
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ListTile(
+        onTap: ontap,
+        leading: Icon(
+          icon,
           color: Colors.white,
+        ),
+        title: Text(
+          title!,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18
+          ),
         ),
       ),
     );

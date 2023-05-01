@@ -13,9 +13,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
   runApp(
-
     MyApp(),
-
   );
 }
 
@@ -37,8 +35,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: const Locale('en', 'US'),
       getPages: Routes.pages,
+      // initialRoute: '/mainscreen',
       home:  splashScreen(),
     );
   }
